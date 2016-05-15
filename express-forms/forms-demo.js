@@ -27,39 +27,6 @@ app.get('/get-data',function(req,res){
 
 app.post('/post-data',function(req,res){
   var qParams = [];
-  for (var p in req.query){
-  qParams.push({'name':p,'value':req.query[p]})
-  }
-  var context = {};
-  context.dataList = qParams;
-  res.render('post-data', context);
-});
-
-
-app.get('/get-loopback',function(req,res){
-  var qParams = "";
-  for (var p in req.query){
-    qParams += "The name " + p + " contains the value " + req.query[p] + ", ";
-  }
-  qParams = qParams.substring(0,qParams.lastIndexOf(','));
-  qParams += '.';
-  var context = {};
-  context.dataList = qParams;
-  res.render('get-loopback', context);
-});
-
-app.get('/get-loopback-improved',function(req,res){
-  var qParams = [];
-  for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]})
-  }
-  var context = {};
-  context.dataList = qParams;
-  res.render('get-loopback-improved', context);
-});
-
-app.post('/post-loopback', function(req,res){
-  var qParams = [];
   for (var p in req.body){
     qParams.push({'name':p,'value':req.body[p]})
   }
