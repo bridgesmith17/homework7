@@ -15,11 +15,16 @@ app.get('/',function(req,res){
   res.render('home');
 });
 
-app.get('/show-data',function(req,res){
+app.get('/get-data',function(req,res){
+  var qParams = [];
+  for (var p in req.query){
+  qParams.push({'name':p,'value':req.query[p]})
+  }
   var context = {};
-  context.sentData = req.query.myData;
-  res.render('show-data', context);
+  context.dataList = qParams;
+  res.render('get-data', context);
 });
+
 
 app.get('/get-loopback',function(req,res){
   var qParams = "";
