@@ -25,6 +25,18 @@ app.get('/get-data',function(req,res){
   res.render('get-data', context);
 });
 
+app.post('/post-data',function(req,res){
+  var qParams = [];
+  for (var p in req.body){
+    qParams.push({'name':p,'value':req.body[p]})
+  }
+  console.log(qParams);
+  console.log(req.body);
+  var context = {};
+  context.dataList = qParams;
+  res.render('post-data', context);
+});
+
 
 app.get('/get-loopback',function(req,res){
   var qParams = "";
