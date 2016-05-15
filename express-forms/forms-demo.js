@@ -30,13 +30,20 @@ app.post('/post-data',function(req,res){
   for (var p in req.query){
   qParams.push({'name':p,'value':req.query[p]})
   }
+  
+  var bParams=[];
   for (var p in req.body){
-    qParams.push({'name':p,'value':req.body[p]})
+    bParams.push({'name':p,'value':req.body[p]})
   }
+
   console.log(qParams);
+  console.log(bParams);
+
   console.log(req.body);
+  
   var context = {};
-  context.dataList = qParams;
+  context.dataList = bParams;
+  context.queryList= qParams;
   res.render('post-data', context);
 });
 
